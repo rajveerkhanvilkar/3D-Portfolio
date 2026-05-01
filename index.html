@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="custom-cursor.css">
     <link rel="stylesheet" href="force-cursor.css">
     <link rel="stylesheet" href="border-glow.css">
-    <link rel="stylesheet" href="bento-grid.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
@@ -459,7 +458,7 @@
 
             <div class="projects-grid">
                 <!-- Project 1: Jarvis AI Assistant -->
-                <div data-aos="fade-up" data-aos-duration="1000" class="project-card bento-big">
+                <div data-aos="fade-up" data-aos-duration="1000" class="project-card">
                     <div class="project-image jarvis-image" onclick="openVideoModal()">
                         <video class="project-video" preload="metadata">
                             <source src="jarvis-assistant.mp4" type="video/mp4">
@@ -486,7 +485,7 @@
                 </div>
 
                 <!-- Project 2: ThugNaash -->
-                <div data-aos="fade-up" data-aos-duration="1200" class="project-card bento-wide">
+                <div data-aos="fade-up" data-aos-duration="1200" class="project-card">
                     <div class="project-image project-2 thugnaash-image">
                         <div class="project-overlay">
                             <span class="view-project">View Details →</span>
@@ -507,7 +506,7 @@
                 </div>
 
                 <!-- Project 3: Apka Rakshak -->
-                <div data-aos="fade-up" data-aos-duration="1400" class="project-card bento-tall">
+                <div data-aos="fade-up" data-aos-duration="1400" class="project-card">
                     <div class="project-image apka-rakshak-image">
                         <div class="project-overlay">
                             <a href="https://play.google.com/store/apps/details?id=com.security.apkarakshak"
@@ -1130,38 +1129,6 @@
 
                 element.style.setProperty('--mouse-x', `${x}%`);
                 element.style.setProperty('--mouse-y', `${y}%`);
-            });
-        });
-        // Bento Scroll Parallax Effect
-        window.addEventListener('scroll', () => {
-            if (window.innerWidth < 1024) return; // Disable on mobile/tablet for performance
-            
-            const cards = document.querySelectorAll('.project-card');
-            const windowHeight = window.innerHeight;
-
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const cardCenter = rect.top + rect.height / 2;
-                const viewportCenter = windowHeight / 2;
-                
-                // Distance from center of viewport (-1 to 1)
-                const distanceFromCenter = (cardCenter - viewportCenter) / (windowHeight / 2);
-                
-                // Only apply effect if card is somewhat in view
-                if (Math.abs(distanceFromCenter) < 1.5) {
-                    // Subtle Z-shift and Rotation
-                    const translateZ = Math.abs(distanceFromCenter) * -60; // Recede as it leaves center
-                    const rotateX = distanceFromCenter * 10; // Tilt based on scroll position
-                    
-                    // Maintain existing mouse-over tilt logic if possible, 
-                    // but for simplicity during scroll we override.
-                    // The mousemove listener will override this when the mouse is active.
-                    card.style.transform = `perspective(2000px) translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
-                    
-                    // Subtle depth opacity
-                    const opacity = 1 - Math.abs(distanceFromCenter) * 0.15;
-                    card.style.opacity = opacity;
-                }
             });
         });
     </script>
