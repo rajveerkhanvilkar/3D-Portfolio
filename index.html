@@ -988,14 +988,14 @@
                 // Clone and append skills twice for seamless loop
                 skillCards.forEach(card => {
                     const proficiency = parseInt(card.getAttribute('data-proficiency') || '0');
-                    // bottom: -120% is 0%, bottom: -20% is 100% (approx 100% height)
-                    const fillLevel = -120 + proficiency;
+                    // bottom: -200% is 0% filled, bottom: -100% is 100% filled (for a 200% high element)
+                    const fillLevel = -200 + proficiency;
                     card.style.setProperty('--fill-level', `${fillLevel}%`);
                     scrollWrapper.appendChild(card.cloneNode(true));
                 });
                 skillCards.forEach(card => {
                     const proficiency = parseInt(card.getAttribute('data-proficiency') || '0');
-                    const fillLevel = -120 + proficiency;
+                    const fillLevel = -200 + proficiency;
                     card.style.setProperty('--fill-level', `${fillLevel}%`);
                     scrollWrapper.appendChild(card.cloneNode(true));
                 });
