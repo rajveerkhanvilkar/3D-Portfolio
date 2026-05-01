@@ -1,0 +1,60 @@
+/* ========================================
+   BENTO GRID & 3D PARALLAX
+   Modern Apple/Stripe style layout
+   ======================================== */
+
+.projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-auto-rows: minmax(300px, auto) !important;
+    gap: 2.5rem !important;
+    perspective: 2000px;
+}
+
+/* Bento Sizing Classes */
+.project-card.bento-big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.project-card.bento-wide {
+    grid-column: span 2;
+}
+
+.project-card.bento-tall {
+    grid-row: span 2;
+}
+
+/* Base Project Card Enhancement for Bento */
+.project-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, opacity 0.5s ease; /* Faster transform for scroll, smooth opacity */
+    will-change: transform, opacity;
+}
+
+/* Desktop Only: Bento adjustments */
+@media (min-width: 1024px) {
+    .project-card.bento-big .project-image {
+        height: 100% !important;
+    }
+    
+    .project-card.bento-tall .project-image {
+        height: 70% !important;
+    }
+}
+
+/* Mobile: Revert to standard grid */
+@media (max-width: 1023px) {
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+    }
+    
+    .project-card.bento-big,
+    .project-card.bento-wide,
+    .project-card.bento-tall {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+}
