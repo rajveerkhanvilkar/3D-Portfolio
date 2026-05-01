@@ -58,18 +58,83 @@
 .skills-grid .skill-card {
     flex-shrink: 0;
     margin: 0 1.5rem;
-    transform-style: preserve-3d;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
-    backface-visibility: hidden;
+    position: relative;
+    overflow: hidden;
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    min-width: 130px;
+    z-index: 1;
 }
 
-/* 3D Flip animation on hover */
-.skills-grid .skill-card:hover {
-    transform: rotateY(180deg) scale(1.1) translateY(-5px);
+/* Water filling animation */
+.water-fill {
+    position: absolute;
+    bottom: -120%; /* Start well below */
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(180deg, rgba(0, 212, 255, 0.6), rgba(0, 102, 255, 0.8));
+    border-radius: 38%;
+    transition: bottom 2s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+    pointer-events: none;
+    animation: wave 10s linear infinite paused;
 }
 
-/* Ensure smooth flip for all children */
-.skills-grid .skill-card * {
-    backface-visibility: hidden;
+.skill-card:hover .water-fill {
+    bottom: var(--fill-level, -20%);
+    animation-play-state: running;
 }
+
+@keyframes wave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.water-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+.skill-card:hover .water-text {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.skill-card:hover img {
+    opacity: 0.1;
+    filter: blur(2px);
+    transform: scale(0.8);
+}
+
+.skill-card:hover span {
+    opacity: 0.1;
+}
+
+.skill-card img, .skill-card span {
+    transition: all 0.5s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: #00d4ff;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
