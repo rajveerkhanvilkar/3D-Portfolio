@@ -25,6 +25,9 @@
     <div class="cursor-dot"></div>
     <div class="cursor-circle"></div>
 
+    <!-- WebGL Fluid Simulation Background -->
+    <canvas id="fluid-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.6;"></canvas>
+
     <img class="image-gradient" src="gradient.png" alt="gradient">
     <div class="layer-blur"></div>
 
@@ -1131,7 +1134,28 @@
                 element.style.setProperty('--mouse-y', `${y}%`);
             });
         });
+
+        // Magnetic Effect for Nav, Buttons, and Cards
+        const magneticElements = document.querySelectorAll('nav a, .btn-get-started, .btn-signing-main, .social-icon, .stat-card, .achievement-card, .skill-card, .project-card');
+
+        magneticElements.forEach(element => {
+            element.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // 0.3 factor makes it "magnetic" without being too aggressive
+                this.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.02)`;
+                this.style.transition = 'transform 0.1s ease-out';
+            });
+
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translate(0px, 0px) scale(1)';
+                this.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+        });
     </script>
+    <script src="fluid-sim.js"></script>
 </body>
 
 </html>
