@@ -21,7 +21,8 @@ textarea,
 .input-field,
 button,
 .btn-get-started,
-.btn-signing-main {
+.btn-signing-main,
+.btn-signing {
     position: relative;
     overflow: hidden;
 }
@@ -44,7 +45,8 @@ textarea::before,
 .input-field::before,
 button::before,
 .btn-get-started::before,
-.btn-signing-main::before {
+.btn-signing-main::before,
+.btn-signing::before {
     content: '';
     position: absolute;
     top: 0;
@@ -98,6 +100,7 @@ textarea:focus::before,
 .input-field:focus::before,
 button:hover::before,
 .btn-get-started:hover::before,
-.btn-signing-main:hover::before {
+.btn-signing-main:hover::before,
+.btn-signing:hover::before {
     opacity: 1;
 }
