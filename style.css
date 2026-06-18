@@ -517,7 +517,8 @@ main {
 .about-section {
     min-height: 100vh;
     padding: 8rem 2rem;
-    background: linear-gradient(180deg, black 0%, #0a0a0a 50%, black 100%);
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent to show fluid effect */
+    backdrop-filter: blur(5px);
     position: relative;
     overflow: hidden;
 }
@@ -875,7 +876,7 @@ main {
 .projects-section {
     padding: 0 !important;
     overflow: hidden;
-    background: transparent;
+    background: transparent; /* Show fluid effect */
     min-height: 100vh;
 }
 
@@ -1549,9 +1550,9 @@ html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0; /* Changed from -1 to 0 to be above backgrounds but below content */
+    z-index: 0; /* Move to 0 so it's above absolute background layers but below content */
     pointer-events: none;
-    opacity: 0.8; /* Increased opacity for better visibility */
+    opacity: 0.9;
 }
 
 .skills-section::before {
