@@ -1437,9 +1437,9 @@ html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 0; /* Changed from -1 to 0 to be above backgrounds but below content */
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.8; /* Increased opacity for better visibility */
 }
 
 .skills-section::before {

@@ -9,13 +9,13 @@
     let config = {
         SIM_RESOLUTION: 128,
         DYE_RESOLUTION: 512,
-        DENSITY_DISSIPATION: 0.97,
+        DENSITY_DISSIPATION: 0.98, // Slower dissipation (was 0.97)
         VELOCITY_DISSIPATION: 0.98,
         PRESSURE_DISSIPATION: 0.8,
         PRESSURE_ITERATIONS: 20,
         CURL: 30,
-        SPLAT_RADIUS: 0.25,
-        SPLAT_FORCE: 6000,
+        SPLAT_RADIUS: 0.35, // Larger ripples (was 0.25)
+        SPLAT_FORCE: 8000, // Stronger force (was 6000)
         SHADING: true,
         COLORFUL: true,
         COLOR_UPDATE_SPEED: 10,
@@ -949,9 +949,9 @@
 
     function generateColor () {
         let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-        c.r *= 0.15;
-        c.g *= 0.15;
-        c.b *= 0.15;
+        c.r *= 0.8; // Increased from 0.15
+        c.g *= 0.8;
+        c.b *= 0.8;
         return c;
     }
 
