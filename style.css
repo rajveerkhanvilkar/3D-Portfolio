@@ -867,52 +867,52 @@ main {
 
 /* PROJECTS SECTION */
 
+/* ========================================
+   HORIZONTAL PROJECTS SCROLL
+   Professional GSAP-powered horizontal traversal
+   ======================================== */
+
 .projects-section {
+    padding: 0 !important;
+    overflow: hidden;
+    background: transparent;
     min-height: 100vh;
-    padding: 8rem 2rem;
-    background: linear-gradient(180deg, black 0%, #0a0a0a 50%, black 100%);
+}
+
+.projects-horizontal-wrapper {
+    height: 100%;
+}
+
+.projects-sticky-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
-.projects-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-size: 4rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #ffffff 0%, #a7a7a7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.section-subtitle {
-    text-align: center;
-    font-size: 1.3rem;
-    color: #6b6b6b;
-    margin-bottom: 5rem;
-    letter-spacing: 0.05em;
+.projects-horizontal-content {
+    padding: 0 5vw;
+    width: 100%;
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 2.5rem;
-    padding: 0 2rem;
+    display: flex !important;
+    white-space: nowrap;
+    gap: 4rem !important;
+    padding: 2rem 0 !important;
+    will-change: transform;
 }
 
 .project-card {
+    flex: 0 0 500px !important;
     background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
     border-radius: 20px;
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid #2a2a2a;
     cursor: pointer;
+    white-space: normal; /* Resetting for content inside */
 }
 
 .project-card:hover {
@@ -920,6 +920,44 @@ main {
     box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
     border-color: #0099ff;
 }
+
+.projects-overlay-text {
+    position: absolute;
+    top: 5rem;
+    left: 5vw;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.projects-overlay-text .section-title {
+    margin-bottom: 0.5rem;
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-overlay-text .section-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+    color: #6b6b6b;
+}
+
+/* Responsive adjustments for horizontal projects */
+@media (max-width: 768px) {
+    .project-card {
+        flex: 0 0 85vw !important;
+    }
+    
+    .projects-overlay-text .section-title {
+        font-size: 2.5rem;
+    }
+}
+
 
 .project-image {
     height: 250px;
@@ -1416,6 +1454,80 @@ html {
 
     .contact-card {
         padding: 2rem 1.5rem;
+    }
+}
+
+/* ========================================
+   HORIZONTAL PROJECTS SCROLL
+   Professional GSAP-powered horizontal traversal
+   ======================================== */
+
+.projects-section {
+    padding: 0 !important;
+    overflow: hidden;
+    background: transparent;
+}
+
+.projects-horizontal-wrapper {
+    height: 100%;
+}
+
+.projects-sticky-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-horizontal-content {
+    padding: 0 5vw;
+}
+
+.projects-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 4rem !important;
+    padding: 2rem 0 !important;
+    grid-template-columns: none !important; /* Overriding previous grid */
+}
+
+.project-card {
+    flex: 0 0 500px !important; /* Fixed width for cards in horizontal scroll */
+    margin-bottom: 0 !important;
+}
+
+.projects-overlay-text {
+    position: absolute;
+    top: 5rem;
+    left: 5vw;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.projects-overlay-text .section-title {
+    margin-bottom: 0.5rem;
+    font-size: 4rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-overlay-text .section-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+}
+
+/* Responsive adjustments for horizontal projects */
+@media (max-width: 768px) {
+    .project-card {
+        flex: 0 0 85vw !important;
+    }
+    
+    .projects-overlay-text .section-title {
+        font-size: 2.5rem;
     }
 }
 

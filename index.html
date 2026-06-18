@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="force-cursor.css">
     <link rel="stylesheet" href="border-glow.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- GSAP for Professional Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body class="custom-cursor-active">
@@ -425,11 +429,10 @@
             style="position: absolute; top: 10%; left: 5%; z-index: 0; opacity: 0.5;"></div>
 
 
-        <div class="projects-container">
-            <h2 data-aos="fade-up" data-aos-duration="1000" class="section-title">MY PROJECTS</h2>
-            <p data-aos="fade-up" data-aos-duration="1200" class="section-subtitle">A showcase of my recent work</p>
-
-            <div class="projects-grid">
+        <div class="projects-horizontal-wrapper">
+            <div class="projects-sticky-container">
+                <div class="projects-horizontal-content">
+                    <div class="projects-grid">
                 <!-- Project 1: Jarvis AI Assistant -->
                 <div data-aos="fade-up" data-aos-duration="1000" class="project-card">
                     <div class="project-image jarvis-image" onclick="openVideoModal()">
@@ -632,6 +635,12 @@
                             <span>Analytics</span>
                         </div>
                     </div>
+                </div>
+                    </div>
+                </div>
+                <div class="projects-overlay-text">
+                    <h2 class="section-title">MY PROJECTS</h2>
+                    <p class="section-subtitle">Scroll down to explore &gt;</p>
                 </div>
             </div>
         </div>
@@ -1098,6 +1107,29 @@
                 element.style.setProperty('--mouse-y', `${y}%`);
             });
         });
+
+        // Initialize GSAP ScrollTrigger for Horizontal Projects
+        gsap.registerPlugin(ScrollTrigger);
+
+        const projectSections = document.querySelector('.projects-horizontal-wrapper');
+        const projectsGrid = document.querySelector('.projects-grid');
+        
+        if (projectSections && projectsGrid) {
+            // Horizontal scroll animation
+            gsap.to(projectsGrid, {
+                x: () => -(projectsGrid.scrollWidth - window.innerWidth + 100),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: projectSections,
+                    start: "top top",
+                    end: () => `+=${projectsGrid.scrollWidth}`,
+                    scrub: 1.5,
+                    pin: true,
+                    invalidateOnRefresh: true,
+                    anticipatePin: 1
+                }
+            });
+        }
     </script>
     <script src="fluid-sim.js"></script>
 </body>
